@@ -1,18 +1,21 @@
-import junit.framework.*;
+import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
-public class CustomerStatementTest extends TestCase
+import static junit.framework.TestCase.assertEquals;
+
+public class CustomerStatementTest
 {
-	public CustomerStatementTest(String name) {
-		super (name);
-	}
-
 	private Customer customer;
 
-	protected void setUp ()  {
+
+	@Before
+	public void setUp ()  {
 		customer = new Customer ("Customer");
 	}
 
-	public void testStatementForOneNewReleaseRental() {
+    @Test
+	public void statementForOneNewReleaseRental() {
 		customer.addRental (getMovieRental("New Release",Movie.NEW_RELEASE,3));
 		assertEquals ("Rental Record for Customer\n" +
 				"\tNew Release\t9.0\n" +
@@ -21,7 +24,8 @@ public class CustomerStatementTest extends TestCase
 				customer.statement ());
 	}
 
-	public void testStatementForTwoNewReleaseRentals() {
+	@Test
+	public void statementForTwoNewReleaseRentals() {
 		customer.addRental (getMovieRental("New Release", Movie.NEW_RELEASE, 3));
 		customer.addRental (getMovieRental("Another New Release", Movie.NEW_RELEASE, 3));
 		assertEquals ("Rental Record for Customer\n" +
@@ -32,7 +36,8 @@ public class CustomerStatementTest extends TestCase
 				customer.statement ());
 	}
 
-	public void testStatementForOneSingleChildrensRental() {
+	@Test
+	public void statementForOneSingleChildrensRental() {
 		customer.addRental (getMovieRental("Childrens", Movie.CHILDRENS, 3));
 		assertEquals ("Rental Record for Customer\n" +
 				"\tChildrens\t1.5\n" +
@@ -41,7 +46,8 @@ public class CustomerStatementTest extends TestCase
 				customer.statement ());
 	}
 
-	public void testStatementForThreeRegularRentals() {
+	@Test
+	public void statementForThreeRegularRentals() {
 		customer.addRental (getMovieRental("Regular", Movie.REGULAR, 1));
 		customer.addRental (getMovieRental("Another Regular", Movie.REGULAR, 2));
 		customer.addRental (getMovieRental("Different Regular", Movie.REGULAR, 3));
