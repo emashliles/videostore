@@ -6,6 +6,8 @@ public class VideoStoreTest extends TestCase
 		super (name);
 	}
 
+	private Customer customer;
+
 	protected void setUp ()  {
 		customer = new Customer ("Customer");
 	}
@@ -52,6 +54,4 @@ public class VideoStoreTest extends TestCase
 				"You earned 3 frequent renter points\n",
 				customer.statement ());
 	}
-
-	private Customer customer;
 }
