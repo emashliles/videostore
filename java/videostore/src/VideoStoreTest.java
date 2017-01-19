@@ -12,7 +12,7 @@ public class VideoStoreTest extends TestCase
 		customer = new Customer ("Customer");
 	}
 
-	public void testSingleNewReleaseStatement () {
+	public void testCustomerStatementForOneNewRelease() {
 		customer.addRental (getRental("New Release",Movie.NEW_RELEASE,3));
 		assertEquals ("Rental Record for Customer\n" +
 				"\tNew Release\t9.0\n" +
@@ -21,7 +21,7 @@ public class VideoStoreTest extends TestCase
 				customer.statement ());
 	}
 
-	public void testDualNewReleaseStatement () {
+	public void testCustomerStatementForTwoNewReleases() {
 		customer.addRental (getRental("New Release", Movie.NEW_RELEASE, 3));
 		customer.addRental (getRental("Another New Release", Movie.NEW_RELEASE, 3));
 		assertEquals ("Rental Record for Customer\n" +
@@ -32,7 +32,7 @@ public class VideoStoreTest extends TestCase
 				customer.statement ());
 	}
 
-	public void testSingleChildrensStatement () {
+	public void testCustomerStatementForOneSingleChildrens() {
 		customer.addRental (getRental("Childrens", Movie.CHILDRENS, 3));
 		assertEquals ("Rental Record for Customer\n" +
 				"\tChildrens\t1.5\n" +
@@ -41,7 +41,7 @@ public class VideoStoreTest extends TestCase
 				customer.statement ());
 	}
 
-	public void testMultipleRegularStatement () {
+	public void testCustomerStatementForThreeRegular() {
 		customer.addRental (getRental("Regular", Movie.REGULAR, 1));
 		customer.addRental (getRental("Another Regular", Movie.REGULAR, 2));
 		customer.addRental (getRental("Different Regular", Movie.REGULAR, 3));
