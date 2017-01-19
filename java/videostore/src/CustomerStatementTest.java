@@ -1,8 +1,8 @@
 import junit.framework.*;
 
-public class VideoStoreTest extends TestCase
+public class CustomerStatementTest extends TestCase
 {
-	public VideoStoreTest (String name) {
+	public CustomerStatementTest(String name) {
 		super (name);
 	}
 
