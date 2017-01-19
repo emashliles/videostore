@@ -13,7 +13,7 @@ public class VideoStoreTest extends TestCase
 	}
 
 	public void testSingleNewReleaseStatement () {
-		customer.addRental (new Rental (new Movie ("New Release", Movie.NEW_RELEASE), 3));
+		customer.addRental (getRental("New Release",Movie.NEW_RELEASE,3));
 		assertEquals ("Rental Record for Customer\n" +
 				"\tNew Release\t9.0\n" +
 				"You owed 9.0\n" +
@@ -22,8 +22,8 @@ public class VideoStoreTest extends TestCase
 	}
 
 	public void testDualNewReleaseStatement () {
-		customer.addRental (new Rental (new Movie ("New Release", Movie.NEW_RELEASE), 3));
-		customer.addRental (new Rental (new Movie ("Another New Release", Movie.NEW_RELEASE), 3));
+		customer.addRental (getRental("New Release", Movie.NEW_RELEASE, 3));
+		customer.addRental (getRental("Another New Release", Movie.NEW_RELEASE, 3));
 		assertEquals ("Rental Record for Customer\n" +
 				"\tNew Release\t9.0\n" +
 				"\tAnother New Release\t9.0\n" +
@@ -33,7 +33,7 @@ public class VideoStoreTest extends TestCase
 	}
 
 	public void testSingleChildrensStatement () {
-		customer.addRental (new Rental (new Movie ("Childrens", Movie.CHILDRENS), 3));
+		customer.addRental (getRental("Childrens", Movie.CHILDRENS, 3));
 		assertEquals ("Rental Record for Customer\n" +
 				"\tChildrens\t1.5\n" +
 				"You owed 1.5\n" +
@@ -42,9 +42,9 @@ public class VideoStoreTest extends TestCase
 	}
 
 	public void testMultipleRegularStatement () {
-		customer.addRental (new Rental (new Movie ("Regular", Movie.REGULAR), 1));
-		customer.addRental (new Rental (new Movie ("Another Regular", Movie.REGULAR), 2));
-		customer.addRental (new Rental (new Movie ("Different Regular", Movie.REGULAR), 3));
+		customer.addRental (getRental("Regular", Movie.REGULAR, 1));
+		customer.addRental (getRental("Another Regular", Movie.REGULAR, 2));
+		customer.addRental (getRental("Different Regular", Movie.REGULAR, 3));
 
 		assertEquals ("Rental Record for Customer\n" +
 				"\tRegular\t2.0\n" +
@@ -53,5 +53,9 @@ public class VideoStoreTest extends TestCase
 				"You owed 7.5\n" +
 				"You earned 3 frequent renter points\n",
 				customer.statement ());
+	}
+
+	private Rental getRental(String title, int priceCode, int daysRented) {
+		return new Rental (new Movie (title, priceCode), daysRented);
 	}
 }
