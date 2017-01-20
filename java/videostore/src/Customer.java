@@ -3,6 +3,9 @@ import java.util.Enumeration;
 
 public class Customer
 {
+	private String name;
+	private Vector rentals = new Vector ();
+
 	public Customer (String name) {
 		this.name = name;
 	}
@@ -74,15 +77,10 @@ public class Customer
             thisAmount += (each.getDaysRented () - 2) * 1.5;
 		return thisAmount;
 	}
-
 	public double getThisAmountForChildrensMovie(double thisAmount, Rental each) {
 		thisAmount += 1.5;
 		if (each.getDaysRented () > 3)
             thisAmount += (each.getDaysRented () - 3) * 1.5;
 		return thisAmount;
 	}
-
-
-	private String name;
-	private Vector rentals = new Vector ();
 }

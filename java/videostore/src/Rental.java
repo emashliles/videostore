@@ -1,5 +1,8 @@
 public class Rental
 {
+	private int daysRented;
+	private Movie movie;
+
 	public Rental (Movie movie, int daysRented) {
 		this.movie 		= movie;
 		this.daysRented = daysRented;
@@ -8,11 +11,7 @@ public class Rental
 	public int getDaysRented () {
 		return daysRented;
 	}
-
 	public Movie getMovie () {
 		return movie;
 	}
-
-	private Movie movie;
-	private int daysRented;
 }
