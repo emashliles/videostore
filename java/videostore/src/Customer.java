@@ -37,8 +37,7 @@ public class Customer
 					break;
 				case Movie.CHILDRENS:
 					thisAmount += 1.5;
-					if (each.getDaysRented () > 3)
-						thisAmount += (each.getDaysRented () - 3) * 1.5;
+					thisAmount = getThisAmountForChildrensMovie(thisAmount, each);
 					break;
 			}
 
@@ -59,6 +58,12 @@ public class Customer
 
 
 		return result;
+	}
+
+	public double getThisAmountForChildrensMovie(double thisAmount, Rental each) {
+		if (each.getDaysRented () > 3)
+            thisAmount += (each.getDaysRented () - 3) * 1.5;
+		return thisAmount;
 	}
 
 
