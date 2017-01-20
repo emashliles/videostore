@@ -38,12 +38,7 @@ public class Customer
 					break;
 			}
 
-			frequentRenterPoints++;
-
-			if (each.getMovie ().getPriceCode () == Movie.NEW_RELEASE
-					&& each.getDaysRented () > 1) {
-				frequentRenterPoints++;
-			}
+			frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, each);
 
 			result += "\t" + each.getMovie ().getTitle () + "\t"
 								+ String.valueOf (thisAmount) + "\n";
@@ -56,6 +51,16 @@ public class Customer
 
 
 		return result;
+	}
+
+	public int getFrequentRenterPoints(int frequentRenterPoints, Rental each) {
+		frequentRenterPoints++;
+
+		if (each.getMovie ().getPriceCode () == Movie.NEW_RELEASE
+                && each.getDaysRented () > 1) {
+            frequentRenterPoints++;
+        }
+		return frequentRenterPoints;
 	}
 
 	public double getThisAmountForNewReleaseMovie(double thisAmount, Rental each) {
