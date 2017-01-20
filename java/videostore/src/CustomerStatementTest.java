@@ -15,6 +15,7 @@ public class CustomerStatementTest
     @Test
 	public void statementForOneNewReleaseRental() {
 		customer.addRental (getMovieRental("New Release",Movie.NEW_RELEASE,3));
+
 		assertEquals ("Rental Record for Customer\n" +
 				"\tNew Release\t9.0\n" +
 				"You owed 9.0\n" +
@@ -26,6 +27,7 @@ public class CustomerStatementTest
 	public void statementForTwoNewReleaseRentals() {
 		customer.addRental (getMovieRental("New Release", Movie.NEW_RELEASE, 3));
 		customer.addRental (getMovieRental("Another New Release", Movie.NEW_RELEASE, 3));
+
 		assertEquals ("Rental Record for Customer\n" +
 				"\tNew Release\t9.0\n" +
 				"\tAnother New Release\t9.0\n" +
@@ -37,6 +39,7 @@ public class CustomerStatementTest
 	@Test
 	public void statementForOneSingleChildrensRental() {
 		customer.addRental (getMovieRental("Childrens", Movie.CHILDRENS, 3));
+
 		assertEquals ("Rental Record for Customer\n" +
 				"\tChildrens\t1.5\n" +
 				"You owed 1.5\n" +
