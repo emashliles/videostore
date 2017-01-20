@@ -28,15 +28,12 @@ public class Customer
 			// determines the amount for each line
 			switch (each.getMovie ().getPriceCode ()) {
 				case Movie.REGULAR:
-					thisAmount += 2;
-					if (each.getDaysRented () > 2)
-						thisAmount += (each.getDaysRented () - 2) * 1.5;
+					thisAmount = getThisAmountForRegularMovie(thisAmount, each);
 					break;
 				case Movie.NEW_RELEASE:
-					thisAmount += each.getDaysRented () * 3;
+					thisAmount = getThisAmountForNewReleaseMovie(thisAmount, each);
 					break;
 				case Movie.CHILDRENS:
-					thisAmount += 1.5;
 					thisAmount = getThisAmountForChildrensMovie(thisAmount, each);
 					break;
 			}
@@ -44,8 +41,9 @@ public class Customer
 			frequentRenterPoints++;
 
 			if (each.getMovie ().getPriceCode () == Movie.NEW_RELEASE
-					&& each.getDaysRented () > 1)
+					&& each.getDaysRented () > 1) {
 				frequentRenterPoints++;
+			}
 
 			result += "\t" + each.getMovie ().getTitle () + "\t"
 								+ String.valueOf (thisAmount) + "\n";
@@ -60,7 +58,20 @@ public class Customer
 		return result;
 	}
 
+	public double getThisAmountForNewReleaseMovie(double thisAmount, Rental each) {
+		thisAmount += each.getDaysRented () * 3;
+		return thisAmount;
+	}
+
+	public double getThisAmountForRegularMovie(double thisAmount, Rental each) {
+		thisAmount += 2;
+		if (each.getDaysRented () > 2)
+            thisAmount += (each.getDaysRented () - 2) * 1.5;
+		return thisAmount;
+	}
+
 	public double getThisAmountForChildrensMovie(double thisAmount, Rental each) {
+		thisAmount += 1.5;
 		if (each.getDaysRented () > 3)
             thisAmount += (each.getDaysRented () - 3) * 1.5;
 		return thisAmount;
