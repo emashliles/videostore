@@ -7,7 +7,7 @@ public class CustomerStatementTest
 {
 	private Customer customer;
 
-	@Before
+@Before
 	public void setUp ()  {
 		customer = new Customer ("Customer");
 	}

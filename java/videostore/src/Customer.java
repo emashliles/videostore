@@ -1,17 +1,17 @@
-import java.util.Vector;
-import java.util.Enumeration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Customer
 {
 	private String name;
-	private Vector rentals = new Vector ();
+	private List<Rental> rentals = new ArrayList<Rental>();
 
 	public Customer (String name) {
 		this.name = name;
 	}
 
 	public void addRental (Rental rental) {
-		rentals.addElement (rental);
+		rentals.add(rental);
 	}
 
 	public String getName () {
@@ -21,29 +21,27 @@ public class Customer
 	public String statement () {
 		double 				totalAmount 			= 0;
 		int					frequentRenterPoints 	= 0;
-		Enumeration 		rentals 				= this.rentals.elements ();
 		String 				result 					= "Rental Record for " + getName () + "\n";
 
-		while (rentals.hasMoreElements ()) {
-			double 		thisAmount = 0;
-			Rental 		each = (Rental)rentals.nextElement ();
+		for(Rental rental : rentals){
+			double thisAmount = 0;
 
 			// determines the amount for each line
-			switch (each.getMovie ().getPriceCode ()) {
+			switch (rental.getMovie ().getPriceCode ()) {
 				case Movie.REGULAR:
-					thisAmount = getThisAmountForRegularMovie(thisAmount, each);
+					thisAmount = getThisAmountForRegularMovie(thisAmount, rental);
 					break;
 				case Movie.NEW_RELEASE:
-					thisAmount = getThisAmountForNewReleaseMovie(thisAmount, each);
+					thisAmount = getThisAmountForNewReleaseMovie(thisAmount, rental);
 					break;
 				case Movie.CHILDRENS:
-					thisAmount = getThisAmountForChildrensMovie(thisAmount, each);
+					thisAmount = getThisAmountForChildrensMovie(thisAmount, rental);
 					break;
 			}
 
-			frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, each);
+			frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, rental);
 
-			result += "\t" + each.getMovie ().getTitle () + "\t"
+			result += "\t" + rental.getMovie ().getTitle () + "\t"
 								+ String.valueOf (thisAmount) + "\n";
 			totalAmount += thisAmount;
 
@@ -66,9 +64,9 @@ public class Customer
 		return frequentRenterPoints;
 	}
 
-	public double getThisAmountForNewReleaseMovie(double thisAmount, Rental each) {
-		thisAmount += each.getDaysRented () * 3;
-		return thisAmount;
+	public double getThisAmountForNewReleaseMovie(double totalCost, Rental each) {
+		totalCost += each.getDaysRented () * 3;
+		return totalCost;
 	}
 
 	public double getThisAmountForRegularMovie(double thisAmount, Rental each) {
