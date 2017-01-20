@@ -1,4 +1,3 @@
-import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,7 +6,6 @@ import static junit.framework.TestCase.assertEquals;
 public class CustomerStatementTest
 {
 	private Customer customer;
-
 
 	@Before
 	public void setUp ()  {
