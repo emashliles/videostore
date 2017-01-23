@@ -29,13 +29,13 @@ public class Customer
 			// determines the amount for each line
 			switch (rental.getMovie ().getPriceCode ()) {
 				case Movie.REGULAR:
-					totalCost = getThisAmountForRegularMovie(totalCost, rental);
+					totalCost = totalCostForRegularMovie(totalCost, rental);
 					break;
 				case Movie.NEW_RELEASE:
-					totalCost = getThisAmountForNewReleaseMovie(totalCost, rental);
+					totalCost = totalCostForNewReleaseMovie(totalCost, rental);
 					break;
 				case Movie.CHILDRENS:
-					totalCost = getThisAmountForChildrensMovie(totalCost, rental);
+					totalCost = totalCostForChildrensMovie(totalCost, rental);
 					break;
 			}
 
@@ -64,21 +64,21 @@ public class Customer
 		return frequentRenterPoints;
 	}
 
-	public double getThisAmountForNewReleaseMovie(double totalCost, Rental each) {
+	public double totalCostForNewReleaseMovie(double totalCost, Rental each) {
 		totalCost += each.getDaysRented () * 3;
 		return totalCost;
 	}
 
-	public double getThisAmountForRegularMovie(double thisAmount, Rental each) {
-		thisAmount += 2;
+	public double totalCostForRegularMovie(double totalCost, Rental each) {
+		totalCost += 2;
 		if (each.getDaysRented () > 2)
-            thisAmount += (each.getDaysRented () - 2) * 1.5;
-		return thisAmount;
+            totalCost += (each.getDaysRented () - 2) * 1.5;
+		return totalCost;
 	}
-	public double getThisAmountForChildrensMovie(double thisAmount, Rental each) {
-		thisAmount += 1.5;
+	public double totalCostForChildrensMovie(double totalCost, Rental each) {
+		totalCost += 1.5;
 		if (each.getDaysRented () > 3)
-            thisAmount += (each.getDaysRented () - 3) * 1.5;
-		return thisAmount;
+            totalCost += (each.getDaysRented () - 3) * 1.5;
+		return totalCost;
 	}
 }
