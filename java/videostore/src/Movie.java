@@ -7,11 +7,9 @@ public abstract class Movie
 	public static final int NEW_RELEASE = 1;
 
 	private String title;
-	private int priceCode;
 
-	Movie(String title, int priceCode) {
+	Movie(String title) {
 		this.title 		= title;
-		this.priceCode 	= priceCode;
 	}
 
 	public static Movie createMovie(String title, int priceCode) {
@@ -26,10 +24,6 @@ public abstract class Movie
 				throw new NotImplementedException();
 		}
 
-	}
-
-	public int getPriceCode () {
-		return priceCode;
 	}
 
 	public String getTitle () {

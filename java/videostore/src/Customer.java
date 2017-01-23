@@ -42,7 +42,7 @@ public class Customer
 	public int getFrequentRenterPoints(int frequentRenterPoints, Rental each) {
 		frequentRenterPoints++;
 
-		if (each.getMovie ().getPriceCode () == Movie.NEW_RELEASE
+		if (each.getMovie() instanceof NewReleaseMove
                 && each.getDaysRented () > 1) {
             frequentRenterPoints++;
         }
