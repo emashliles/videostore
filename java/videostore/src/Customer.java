@@ -24,7 +24,7 @@ public class Customer
 
 			totalCost += rental.getTotalRentalCost();
 
-			frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, rental);
+			frequentRenterPoints += rental.getFrequentRenterPoints();
 
 			result += "\t" + rental.getMovie ().getTitle () + "\t"
 								+ String.valueOf (totalCost) + "\n";
@@ -37,16 +37,6 @@ public class Customer
 
 
 		return result;
-	}
-
-	public int getFrequentRenterPoints(int frequentRenterPoints, Rental each) {
-		frequentRenterPoints++;
-
-		if (each.getMovie() instanceof NewReleaseMove
-                && each.getDaysRented () > 1) {
-            frequentRenterPoints++;
-        }
-		return frequentRenterPoints;
 	}
 
 }

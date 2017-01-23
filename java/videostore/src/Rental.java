@@ -8,15 +8,21 @@ public class Rental
 		this.daysRented = daysRented;
 	}
 
-	public int getDaysRented () {
-		return daysRented;
-	}
-
 	public Movie getMovie () {
 		return movie;
 	}
 
 	public double getTotalRentalCost() {
 		return movie.getTotalRentalCost(daysRented);
+	}
+
+	public int getFrequentRenterPoints() {
+		int frequentRenterPoints =1;
+
+		if (getMovie() instanceof NewReleaseMove
+                && daysRented > 1) {
+            frequentRenterPoints++;
+        }
+		return frequentRenterPoints;
 	}
 }

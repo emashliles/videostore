@@ -14,7 +14,7 @@ public class CustomerTest {
     @Test
     public void CalculatesFrequentRenterPoints(){
         Rental rental = new Rental(Movie.createMovie("Regular", Movie.REGULAR), 3);
-        int frequentRenterPoints = customer.getFrequentRenterPoints(0, rental);
+        int frequentRenterPoints = rental.getFrequentRenterPoints();
 
         assertEquals(1, frequentRenterPoints);
     }
@@ -22,7 +22,7 @@ public class CustomerTest {
     @Test
     public void CalculatesFrequentRenterPointsForNewRelease(){
         Rental rental = new Rental(Movie.createMovie("NewRelease", Movie.NEW_RELEASE), 3);
-        int frequentRenterPoints = customer.getFrequentRenterPoints(0, rental);
+        int frequentRenterPoints = rental.getFrequentRenterPoints();
 
         assertEquals(2, frequentRenterPoints);
     }
