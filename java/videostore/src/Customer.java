@@ -4,7 +4,7 @@ import java.util.List;
 public class Customer
 {
 	private String name;
-	private List<Rental> rentals = new ArrayList<Rental>();
+	private List<Rental> rentals = new ArrayList<>();
 
 	public Customer (String name) {
 		this.name = name;
@@ -14,19 +14,14 @@ public class Customer
 		rentals.add(rental);
 	}
 
-	public String getName () {
-		return name;
-	}
-
 	public String statement () {
 		double 				totalAmount 			= 0;
 		int					frequentRenterPoints 	= 0;
-		String 				result 					= "Rental Record for " + getName () + "\n";
+		String 				result 					= "Rental Record for " + name + "\n";
 
 		for(Rental rental : rentals){
 			double totalCost = 0;
 
-			// determines the amount for each line
 			totalCost = totalCostOfRental(rental, totalCost);
 
 			frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, rental);
