@@ -24,26 +24,26 @@ public class Customer
 		String 				result 					= "Rental Record for " + getName () + "\n";
 
 		for(Rental rental : rentals){
-			double thisAmount = 0;
+			double totalCost = 0;
 
 			// determines the amount for each line
 			switch (rental.getMovie ().getPriceCode ()) {
 				case Movie.REGULAR:
-					thisAmount = getThisAmountForRegularMovie(thisAmount, rental);
+					totalCost = getThisAmountForRegularMovie(totalCost, rental);
 					break;
 				case Movie.NEW_RELEASE:
-					thisAmount = getThisAmountForNewReleaseMovie(thisAmount, rental);
+					totalCost = getThisAmountForNewReleaseMovie(totalCost, rental);
 					break;
 				case Movie.CHILDRENS:
-					thisAmount = getThisAmountForChildrensMovie(thisAmount, rental);
+					totalCost = getThisAmountForChildrensMovie(totalCost, rental);
 					break;
 			}
 
 			frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, rental);
 
 			result += "\t" + rental.getMovie ().getTitle () + "\t"
-								+ String.valueOf (thisAmount) + "\n";
-			totalAmount += thisAmount;
+								+ String.valueOf (totalCost) + "\n";
+			totalAmount += totalCost;
 
 		}
 
