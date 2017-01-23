@@ -27,17 +27,7 @@ public class Customer
 			double totalCost = 0;
 
 			// determines the amount for each line
-			switch (rental.getMovie ().getPriceCode ()) {
-				case Movie.REGULAR:
-					totalCost = totalCostForRegularMovie(totalCost, rental);
-					break;
-				case Movie.NEW_RELEASE:
-					totalCost = totalCostForNewReleaseMovie(totalCost, rental);
-					break;
-				case Movie.CHILDRENS:
-					totalCost = totalCostForChildrensMovie(totalCost, rental);
-					break;
-			}
+			totalCost = totalCostOfRental(rental, totalCost);
 
 			frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, rental);
 
@@ -52,6 +42,21 @@ public class Customer
 
 
 		return result;
+	}
+
+	public double totalCostOfRental(Rental rental, double totalCost) {
+		switch (rental.getMovie ().getPriceCode ()) {
+            case Movie.REGULAR:
+                totalCost = totalCostForRegularMovie(totalCost, rental);
+                break;
+            case Movie.NEW_RELEASE:
+                totalCost = totalCostForNewReleaseMovie(totalCost, rental);
+                break;
+            case Movie.CHILDRENS:
+                totalCost = totalCostForChildrensMovie(totalCost, rental);
+                break;
+        }
+		return totalCost;
 	}
 
 	public int getFrequentRenterPoints(int frequentRenterPoints, Rental each) {
