@@ -13,7 +13,7 @@ public class CustomerTest {
 
     @Test
     public void CalculatesFrequentRenterPoints(){
-        Rental rental = new Rental( new Movie("Regular", Movie.REGULAR), 3);
+        Rental rental = new Rental(Movie.createMovie("Regular", Movie.REGULAR), 3);
         int frequentRenterPoints = customer.getFrequentRenterPoints(0, rental);
 
         assertEquals(1, frequentRenterPoints);
@@ -21,7 +21,7 @@ public class CustomerTest {
 
     @Test
     public void CalculatesFrequentRenterPointsForNewRelease(){
-        Rental rental = new Rental( new Movie("NewRelease", Movie.NEW_RELEASE), 3);
+        Rental rental = new Rental(Movie.createMovie("NewRelease", Movie.NEW_RELEASE), 3);
         int frequentRenterPoints = customer.getFrequentRenterPoints(0, rental);
 
         assertEquals(2, frequentRenterPoints);
@@ -29,14 +29,14 @@ public class CustomerTest {
 
     @Test
     public void TotalCostForRegularMovieCanCalculateAmountForMoreThan2Days() {
-        Rental rental = new Rental( new Movie("Regular", Movie.REGULAR), 3);
+        Rental rental = new Rental(Movie.createMovie("Regular", Movie.REGULAR), 3);
         double totalCostForRegualrMovie = customer.totalCostForRegularMovie(0, rental);
         assertEquals(3.5, totalCostForRegualrMovie);
     }
 
     @Test
     public void TotalCostForChildrensMovieCanCalculateAmountForMoreThan3Days() {
-        Rental rental = new Rental( new Movie("Childrens", Movie.CHILDRENS), 4);
+        Rental rental = new Rental(Movie.createMovie("Childrens", Movie.CHILDRENS), 4);
         double totalCostForChildrensMovie = customer.totalCostForChildrensMovie(0, rental);
 
         assertEquals(3.0, totalCostForChildrensMovie);
@@ -45,7 +45,7 @@ public class CustomerTest {
 
     @Test
     public void TotalCostForNewReleaseMovieCanCalculateAmount() {
-        Rental rental = new Rental( new Movie("New Release", Movie.NEW_RELEASE), 3);
+        Rental rental = new Rental(Movie.createMovie("New Release", Movie.NEW_RELEASE), 3);
         double totalCostForNewReleaseMovie = customer.totalCostForNewReleaseMovie(0, rental);
 
         assertEquals(9.0, totalCostForNewReleaseMovie);

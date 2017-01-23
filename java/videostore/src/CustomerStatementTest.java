@@ -74,6 +74,6 @@ public class CustomerStatementTest
 	}
 
 	private Rental getMovieRental(String title, int priceCode, int daysRented) {
-		return new Rental (new Movie (title, priceCode), daysRented);
+		return new Rental (Movie.createMovie(title, priceCode), daysRented);
 	}
 }
