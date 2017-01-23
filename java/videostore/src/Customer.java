@@ -22,7 +22,7 @@ public class Customer
 		for(Rental rental : rentals){
 			double totalCost = 0;
 
-			totalCost = totalCostOfRental(rental, totalCost);
+			totalCost += rental.getTotalRentalCost();
 
 			frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, rental);
 
@@ -37,10 +37,6 @@ public class Customer
 
 
 		return result;
-	}
-
-	public double totalCostOfRental(Rental rental, double totalCost) {
-		return totalCost + rental.getMovie().getTotalRentalCost(rental.getDaysRented());
 	}
 
 	public int getFrequentRenterPoints(int frequentRenterPoints, Rental each) {
