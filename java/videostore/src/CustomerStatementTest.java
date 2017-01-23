@@ -48,6 +48,17 @@ public class CustomerStatementTest
 	}
 
 	@Test
+	public void statementForChildrensRentalOver3Days() {
+		customer.addRental (getMovieRental("Childrens", Movie.CHILDRENS, 4));
+
+		assertEquals ("Rental Record for Customer\n" +
+						"\tChildrens\t3.0\n" +
+						"You owed 3.0\n" +
+						"You earned 1 frequent renter points\n",
+				customer.statement ());
+	}
+
+	@Test
 	public void statementForThreeRegularRentals() {
 		customer.addRental (getMovieRental("Regular", Movie.REGULAR, 1));
 		customer.addRental (getMovieRental("Another Regular", Movie.REGULAR, 2));
