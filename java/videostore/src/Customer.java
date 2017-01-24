@@ -34,7 +34,7 @@ public class Customer
 	}
 
 	private String movieStatementLine(Rental rental, double totalCost) {
-		return "\t" + rental.getMovie ().getTitle () + "\t"
+		return "\t" + rental.getMovieTitle() + "\t"
                             + String.valueOf (totalCost) + "\n";
 	}
 

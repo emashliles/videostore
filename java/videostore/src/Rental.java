@@ -8,8 +8,8 @@ public class Rental
 		this.daysRented = daysRented;
 	}
 
-	public Movie getMovie () {
-		return movie;
+	public String getMovieTitle() {
+		return movie.getTitle();
 	}
 
 	public double getTotalRentalCost() {
@@ -17,9 +17,9 @@ public class Rental
 	}
 
 	public int getFrequentRenterPoints() {
-		int frequentRenterPoints =1;
+		int frequentRenterPoints = 1;
 
-		if (getMovie() instanceof NewReleaseMovie
+		if (movie instanceof NewReleaseMovie
                 && daysRented > 1) {
             frequentRenterPoints++;
         }
