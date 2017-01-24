@@ -19,7 +19,7 @@ public class Rental
 	public int getFrequentRenterPoints() {
 		int frequentRenterPoints =1;
 
-		if (getMovie() instanceof NewReleaseMove
+		if (getMovie() instanceof NewReleaseMovie
                 && daysRented > 1) {
             frequentRenterPoints++;
         }

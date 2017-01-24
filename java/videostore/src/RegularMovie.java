@@ -5,10 +5,13 @@ public class RegularMovie extends Movie {
 
     @Override
     public double getTotalRentalCost(int daysRented) {
-        double baseRentalCost;
-        baseRentalCost = 2;
-        if (daysRented > 2)
-            baseRentalCost += (daysRented - 2) * 1.5;
+        double costPerExtraRentalDay = 1.5;
+        double baseRentalCost = 2;
+        int baseRentalDays = 2;
+
+        if (daysRented > baseRentalDays) {
+            baseRentalCost += (daysRented - baseRentalDays) * costPerExtraRentalDay;
+        }
         return baseRentalCost;
     }
 }

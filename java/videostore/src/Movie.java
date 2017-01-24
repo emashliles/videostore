@@ -15,7 +15,7 @@ public abstract class Movie
 	public static Movie createMovie(String title, int priceCode) {
 		switch(priceCode){
 		    case NEW_RELEASE:
-			    return new NewReleaseMove(title);
+			    return new NewReleaseMovie(title);
 			case REGULAR:
 				return new RegularMovie(title);
 			case CHILDRENS:
