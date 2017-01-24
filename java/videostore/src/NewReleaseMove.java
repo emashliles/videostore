@@ -1,5 +1,5 @@
 public class NewReleaseMove extends Movie {
-    public NewReleaseMove(String title, int priceCode) {
+    public NewReleaseMove(String title) {
         super(title);
     }
 

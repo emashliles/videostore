@@ -15,11 +15,11 @@ public abstract class Movie
 	public static Movie createMovie(String title, int priceCode) {
 		switch(priceCode){
 		    case NEW_RELEASE:
-			    return new NewReleaseMove(title, priceCode);
+			    return new NewReleaseMove(title);
 			case REGULAR:
-				return new RegularMovie(title, priceCode);
+				return new RegularMovie(title);
 			case CHILDRENS:
-				return new ChildrensMovie(title, priceCode);
+				return new ChildrensMovie(title);
 			default:
 				throw new NotImplementedException();
 		}

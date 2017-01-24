@@ -1,13 +1,14 @@
 public class RegularMovie extends Movie {
-    public RegularMovie(String title, int priceCode) {
+    public RegularMovie(String title) {
         super(title);
     }
 
     @Override
     public double getTotalRentalCost(int daysRented) {
-        double totalCost = 2;
+        double baseRentalCost;
+        baseRentalCost = 2;
         if (daysRented > 2)
-            totalCost += (daysRented - 2) * 1.5;
-        return totalCost;
+            baseRentalCost += (daysRented - 2) * 1.5;
+        return baseRentalCost;
     }
 }
