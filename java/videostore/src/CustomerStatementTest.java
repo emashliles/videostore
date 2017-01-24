@@ -16,11 +16,17 @@ public class CustomerStatementTest
 	public void statementForOneNewReleaseRental() {
 		customer.addRental (getMovieRental("New Release", MovieTypes.NEW_RELEASE,3));
 
-		assertEquals ("Rental Record for Customer\n" +
-				"\tNew Release\t9.0\n" +
-				"You owed 9.0\n" +
-				"You earned 2 frequent renter points\n",
+		String rentalCost = "9.0";
+		String frequentRenterPoints = "2";
+		assertEquals (getExpected((String) rentalCost, (String) frequentRenterPoints, "New Release"),
 				customer.statement ());
+	}
+
+	public String getExpected(String rentalCost, String frequentRenterPoints, final String title) {
+		return "Rental Record for Customer\n" +
+				"\t" + title + "\t" + rentalCost + "\n" +
+				"You owed " + rentalCost + "\n" +
+						"You earned " + frequentRenterPoints + " frequent renter points\n";
 	}
 
 	@Test
@@ -51,10 +57,9 @@ public class CustomerStatementTest
 	public void statementForChildrensRentalOver3Days() {
 		customer.addRental (getMovieRental("Childrens", MovieTypes.CHILDRENS, 4));
 
-		assertEquals ("Rental Record for Customer\n" +
-						"\tChildrens\t3.0\n" +
-						"You owed 3.0\n" +
-						"You earned 1 frequent renter points\n",
+		String rentalCost = "3.0";
+		String frequentRenterPoints = "1";
+		assertEquals (getExpected(rentalCost, frequentRenterPoints, "Childrens"),
 				customer.statement ());
 	}
 
