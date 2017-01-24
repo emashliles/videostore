@@ -1,17 +1,22 @@
 public class RegularMovie extends Movie {
+
+    public static final double COST_PER_EXTRA_RENTAL_DAY = 1.5;
+    public static final int BASE_RENTAL_DAYS = 2;
+    public static final double BASE_RENTAL_COST = 2;
+
     public RegularMovie(String title) {
         super(title);
     }
 
     @Override
     public double getTotalRentalCost(int daysRented) {
-        double costPerExtraRentalDay = 1.5;
-        double baseRentalCost = 2;
-        int baseRentalDays = 2;
+        double rentalCost = 0.0;
 
-        if (daysRented > baseRentalDays) {
-            baseRentalCost += (daysRented - baseRentalDays) * costPerExtraRentalDay;
+        rentalCost += BASE_RENTAL_COST;
+
+        if (daysRented > BASE_RENTAL_DAYS) {
+            rentalCost += (daysRented - BASE_RENTAL_DAYS) * COST_PER_EXTRA_RENTAL_DAY;
         }
-        return baseRentalCost;
+        return rentalCost;
     }
 }
