@@ -14,7 +14,7 @@ public class CustomerStatementTest
 
     @Test
 	public void statementForOneNewReleaseRental() {
-		customer.addRental (getMovieRental("New Release",Movie.NEW_RELEASE,3));
+		customer.addRental (getMovieRental("New Release", MovieTypes.NEW_RELEASE,3));
 
 		assertEquals ("Rental Record for Customer\n" +
 				"\tNew Release\t9.0\n" +
@@ -25,8 +25,8 @@ public class CustomerStatementTest
 
 	@Test
 	public void statementForTwoNewReleaseRentals() {
-		customer.addRental (getMovieRental("New Release", Movie.NEW_RELEASE, 3));
-		customer.addRental (getMovieRental("Another New Release", Movie.NEW_RELEASE, 3));
+		customer.addRental (getMovieRental("New Release", MovieTypes.NEW_RELEASE, 3));
+		customer.addRental (getMovieRental("Another New Release", MovieTypes.NEW_RELEASE, 3));
 
 		assertEquals ("Rental Record for Customer\n" +
 				"\tNew Release\t9.0\n" +
@@ -38,7 +38,7 @@ public class CustomerStatementTest
 
 	@Test
 	public void statementForOneSingleChildrensRental() {
-		customer.addRental (getMovieRental("Childrens", Movie.CHILDRENS, 3));
+		customer.addRental (getMovieRental("Childrens", MovieTypes.CHILDRENS, 3));
 
 		assertEquals ("Rental Record for Customer\n" +
 				"\tChildrens\t1.5\n" +
@@ -49,7 +49,7 @@ public class CustomerStatementTest
 
 	@Test
 	public void statementForChildrensRentalOver3Days() {
-		customer.addRental (getMovieRental("Childrens", Movie.CHILDRENS, 4));
+		customer.addRental (getMovieRental("Childrens", MovieTypes.CHILDRENS, 4));
 
 		assertEquals ("Rental Record for Customer\n" +
 						"\tChildrens\t3.0\n" +
@@ -60,9 +60,9 @@ public class CustomerStatementTest
 
 	@Test
 	public void statementForThreeRegularRentals() {
-		customer.addRental (getMovieRental("Regular", Movie.REGULAR, 1));
-		customer.addRental (getMovieRental("Another Regular", Movie.REGULAR, 2));
-		customer.addRental (getMovieRental("Different Regular", Movie.REGULAR, 3));
+		customer.addRental (getMovieRental("Regular", MovieTypes.REGULAR, 1));
+		customer.addRental (getMovieRental("Another Regular", MovieTypes.REGULAR, 2));
+		customer.addRental (getMovieRental("Different Regular", MovieTypes.REGULAR, 3));
 
 		assertEquals ("Rental Record for Customer\n" +
 				"\tRegular\t2.0\n" +
